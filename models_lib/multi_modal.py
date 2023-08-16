@@ -5,7 +5,7 @@
 @author: Vencent_Wang
 @contact: Vencent_Wang@outlook.com
 @file: multi_modal.py
-@time: 2022/3/28 20:05
+@time: 2023/8/13 20:05
 @desc:
 '''
 import math

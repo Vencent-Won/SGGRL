@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+'''
+@author: Vencent_Wang
+@contact: Vencent_Wang@outlook.com
+@file: seq_model.py
+@time: 2023/8/13 20:05
+@desc:
+'''
+
 import math
 import torch
 
