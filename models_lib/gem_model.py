@@ -104,7 +104,7 @@ class GeoGNNModel(nn.Module):
     def graph_dim(self):
         """the out dim of graph_repr"""
         return self.embed_dim
-    '''修改'''
+
     def forward(self, atom_bond_graph, bond_angle_graph, node_id, edge_id):
         """
         Build the network.

@@ -8,23 +8,21 @@
 @time: 2023/8/13 20:05
 @desc:
 '''
-import copy
 
 import torch
 from parser_args import get_args
 import numpy as np
 import json
 
-from utils.dataset import Seq2seqDataset, get_data, split_data, MoleculeDataset
+from utils.dataset import Seq2seqDataset, get_data, split_data
 
-from chemprop.features import mol2graph, get_atom_fdim, get_bond_fdim
-from utils.build_vocab import WordVocab
-from chemprop.data.utils import split_data, get_class_sizes
+from chemprop.features import get_atom_fdim, get_bond_fdim
+from build_vocab import WordVocab
+from chemprop.data.utils import split_data
 
-from utils.dataset import InMemoryDataset, load_npz_to_data_list
+from utils.dataset import InMemoryDataset
 
-from featurizers.gem_featurizer import GeoPredTransformFn, GeoPredCollateFn
-
+from featurizers.gem_featurizer import GeoPredTransformFn
 
 PAD = 0
 UNK = 1
@@ -57,27 +55,9 @@ def main(args):
         device = torch.device('cpu')
 
     # gnn data
-    data_path = 'data/{}.csv'.format(args.dataset)
+    data_path = './data/{}.csv'.format(args.dataset)
     # data_3d = load_smiles_to_dataset(args.data_path_3d)
     datas, args.seq_len = get_data(path=data_path, args=args)
-    # datas = MoleculeDataset(datas[0:128])
-    args.output_dim = args.num_tasks = datas.num_tasks()
-    args.features_size = datas.features_size()
-    args.gnn_atom_dim = get_atom_fdim(args)
-    args.gnn_bond_dim = get_bond_fdim(args) + (not args.atom_messages) * args.gnn_atom_dim
-    # seq data process
-    vocab = WordVocab.load_vocab('./data/{}_vocab.pkl'.format(args.dataset))
-    args.seq_input_dim = args.vocab_num = len(vocab)
-    smiles = datas.smiles()
-    train_data, val_data, test_data = split_data(data=datas, split_type=args.split_type, sizes=args.split_sizes,
-                                                 seed=args.seed, args=args)
-    train_idx = [data.idx for data in train_data]
-    val_idx = [data.idx for data in val_data]
-    test_idx = [data.idx for data in test_data]
-
-    seq_train = Seq2seqDataset(list(np.array(smiles)[train_idx]), vocab=vocab, seq_len=args.seq_len)
-    seq_val = Seq2seqDataset(list(np.array(smiles)[val_idx]), vocab=vocab, seq_len=args.seq_len)
-    seq_test = Seq2seqDataset(list(np.array(smiles)[test_idx]), vocab=vocab, seq_len=args.seq_len)
 
     #3d data process
 

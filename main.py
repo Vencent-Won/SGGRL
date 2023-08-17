@@ -25,7 +25,7 @@ from chemprop.data import StandardScaler
 from utils.dataset import Seq2seqDataset, get_data, split_data, MoleculeDataset, InMemoryDataset, load_npz_to_data_list
 from utils.evaluate import eval_rocauc, eval_rmse
 from torch.utils.data import BatchSampler, RandomSampler, DataLoader
-from utils.build_vocab import WordVocab
+from build_vocab import WordVocab
 from chemprop.nn_utils import NoamLR
 from chemprop.features import mol2graph, get_atom_fdim, get_bond_fdim
 from chemprop.data.utils import get_class_sizes
@@ -162,7 +162,7 @@ def test(args, model, scaler, test_idx_loader, seq_data, seq_mask, gnn_data, geo
 
 
 def main(args):
-    logs_dir = './LOG/{}/{}_{}_{}_{}_{}_{}_{}_{}_{}_{}1/'.format(args.dataset, args.lr, args.cl_loss, args.cl_loss_num,
+    logs_dir = './LOG/{}/{}_{}_{}_{}_{}_{}_{}_{}_{}_{}/'.format(args.dataset, args.lr, args.cl_loss, args.cl_loss_num,
                                                                  args.pro_num, args.pool_type, args.fusion, args.epochs,
                                                                  args.norm, args.gnn_hidden_dim, args.batch_size)
     logs_file1 = logs_dir + "Train_{}".format(args.seed)
@@ -310,18 +310,6 @@ def main(args):
         handler.close()
         logger.removeHandler(handler)
 
-    path = './result1/{}/'.format(args.dataset)
-    if not os.path.exists(path):
-        os.makedirs(path)
-
-    with open(path + '{}.txt'.format(args.seed), 'a') as file_handle:
-        file_handle.write(
-            str('{}_{}_{}_{}_{}_{}_{}_{}_{}_{}'.format(args.lr, args.cl_loss, args.cl_loss_num, args.pro_num,
-                                                       args.pool_type, args.fusion, args.epochs,
-                                                       args.norm, args.gnn_hidden_dim, args.batch_size)))
-        file_handle.write('\n')
-        file_handle.write('epoch:' + str(best_epoch) + ' + result:' + str(best_test))
-        file_handle.write('\n')
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@ from argparse import Namespace
 from utils.enumerator import SmilesEnumerator
 from chemprop.features import get_features_generator
 from chemprop.data.scaler import StandardScaler
+from pgl.utils.data import Dataloader
 from torch_geometric.data import Data, DataLoader, Batch
 from chemprop.data.scaffold import log_scaffold_stats, scaffold_split
 from torch.utils.data.dataset import Dataset
@@ -669,8 +670,6 @@ class Randomizer(object):
         return self.sme.randomize_smiles(sm)
 
 
-'''修改'''
-
 
 class Seq2seqDataset(Dataset):
 
@@ -711,11 +710,11 @@ def mp_pool_map(list_input, func, num_workers):
 
     # add index
     list_new_input = [(index, x) for index, x in enumerate(list_input)]
-    data_gen = DataLoader(list_new_input,
-            batch_size=8,
-            num_workers=num_workers,
-            shuffle=False,
-            collate_fn=_CollateFn(func))
+    data_gen = Dataloader(list_new_input,
+                          batch_size=8,
+                          num_workers=num_workers,
+                          shuffle=False,
+                          collate_fn=_CollateFn(func))
 
     list_output = []
     for sub_outputs in data_gen:
