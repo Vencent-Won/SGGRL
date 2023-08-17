@@ -10,7 +10,7 @@ python data_3d.py --dataset {dataset name}
 ```
 2. Molecular Property Prediction
 ```
-python main.py --dataset {dataset name}
+python main.py --dataset {dataset name} --task_type {reg/class}
 ```
 
 

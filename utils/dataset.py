@@ -6,7 +6,6 @@ import math
 import torch
 import pickle
 import random
-from os.path import join, exists
 
 import numpy as np
 import torch.nn as nn
@@ -15,6 +14,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from rdkit import Chem, rdBase
 from typing import Callable, List, Union, Tuple
+from os.path import join, exists
 from argparse import Namespace
 from utils.enumerator import SmilesEnumerator
 from chemprop.features import get_features_generator
@@ -749,6 +749,7 @@ def save_data_list_to_npz(data_list, npz_file):
         merged_data[key + '.seq_len'] = lens
         merged_data[key + '.singular'] = singular
     np.savez_compressed(npz_file, **merged_data)
+
 
 def load_npz_to_data_list(npz_file):
     """
