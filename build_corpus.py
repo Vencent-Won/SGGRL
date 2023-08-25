@@ -12,7 +12,7 @@ def main():
     args = parser.parse_args()
 
     smiles = pd.read_csv(args.in_path)['smiles'].values
-    with open(args.out_path, 'a') as f:
+    with open(args.out_path, 'w') as f:
         for sm in tqdm(smiles):
             f.write(split(sm)+'\n')
     print('Built a corpus file!')
