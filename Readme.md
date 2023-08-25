@@ -1,6 +1,6 @@
-#SGGRL:Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry
+# SGGRL:Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry
 
-##Usage:
+## Usage:
 
 1. Process Data
 ```
