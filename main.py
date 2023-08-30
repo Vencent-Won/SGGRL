@@ -232,7 +232,7 @@ def main(args):
         data_3d.transform(transform_fn, num_workers=1)
         data_3d.save_data('./data/{}/'.format(args.dataset))
     else:
-        data_3d = load_npz_to_data_list('./data/{}/part-000000.npz'.format(args.dataset))
+        data_3d = data_3d._load_npz_data_path('./data/{}/'.format(args.dataset))
         data_3d = InMemoryDataset(data_3d)
 
     train_sampler = RandomSampler(train_idx)

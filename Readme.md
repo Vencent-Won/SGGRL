@@ -1,4 +1,10 @@
-# SGGRL:Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry
+# SGGRL: Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry
+
+## Framework
+
+![method](https://cdn.jsdelivr.net/gh/Vencent-Won/GraphBed/img/SGGRL-framework.png)
+
+
 
 ## Usage:
 
@@ -12,5 +18,4 @@ python data_3d.py --dataset {dataset name}
 ```
 python main.py --dataset {dataset name} --task_type {reg/class}
 ```
-
 
