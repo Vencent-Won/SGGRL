@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="wzy@10.12.0.15:22 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="wzy@10.12.0.15:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Projects/SGGRL" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="wzy@10.12.11.148:30905 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
