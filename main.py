@@ -116,12 +116,12 @@ def val(args, model, scaler, val_idx_loader, seq_data, seq_mask, gnn_data, geo_d
         edge_id_all, mask, targets = prepare_data(args, idx, seq_data, seq_mask, gnn_data, geo_data, device)
         x_list, preds = model(seq_batch, seq_batch_mask, seq_batch_batch, gnn_batch, features_batch, gnn_batch_batch,
                               geo_gen, node_id_all, edge_id_all)
+        if scaler is not None and args.task_type == 'reg':
+            preds = torch.tensor(scaler.inverse_transform(preds.detach().cpu()).astype(np.float64)).to(device)
         all_loss, lab_loss, cl_loss = model.loss_cal(x_list, preds, targets, mask, args.cl_loss)
         total_all_loss = all_loss.item() + total_all_loss
         total_lab_loss = lab_loss.item() + total_lab_loss
         total_cl_loss = cl_loss.item() + total_cl_loss
-        if scaler is not None and args.task_type == 'reg':
-            preds = torch.tensor(scaler.inverse_transform(preds.detach().cpu()).astype(np.float64))
         y_true.append(targets)
         y_pred.append(preds)
     y_true = torch.cat(y_true, dim=0).detach().cpu().numpy()

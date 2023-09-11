@@ -59,14 +59,14 @@ def get_args():
     parser.add_argument('--gpu', type=int, default=0)
     parser.add_argument('--seed', type=int, default=1)
     parser.add_argument('--cuda', type=int, default=1)
-    parser.add_argument('--dataset', type=str, default='bbbp')
+    parser.add_argument('--dataset', type=str, default='esol')
     parser.add_argument('--metric', type=str, default=None,
                         choices=['auc', 'prc-auc', 'rmse', 'mae', 'mse', 'r2', 'accuracy', 'cross_entropy'])
     parser.add_argument('--no_cache', action='store_true', default=False,
                         help='Turn off caching mol2graph computation')
     parser.add_argument('--num_tasks', type=int, default=1)
     parser.add_argument('--vocab_num', type=int, default=0)
-    parser.add_argument('--task_type', type=str, default='class', help='classification, reg')
+    parser.add_argument('--task_type', type=str, default='reg', help='classification, reg')
     parser.add_argument('--split_type', type=str, default='random',
                         choices=['random', 'scaffold_balanced', 'predetermined', 'crossval', 'index_predetermined'])
     parser.add_argument('--folds_file', type=str, default=None, help='Optional file of fold labels')
