@@ -38,6 +38,6 @@ python main.py --dataset {dataset name} --task_type {reg/class}
 ```
 
 ## Citation
-'''
+```
 Wang Z, Jiang T, Wang J, et al. Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry[J]. arXiv preprint arXiv:2401.03369, 2024.
-'''
+```
