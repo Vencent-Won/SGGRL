@@ -1,14 +1,5 @@
 # SGGRL: Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry
 
-## Apology
-Dear Colleagues,
-
-I apologize for the delay in responding to your queries. I've been preoccupied with my regular workload. I'll address these issues as soon as possible. Sorry for any inconvenience this may have caused.
-
-Best regards, 
-
-Zeyu Wang
-
 ## Framework
 
 ![method](https://cdn.jsdelivr.net/gh/Vencent-Won/GraphBed/img/SGGRL-framework.png)
@@ -37,7 +28,4 @@ python data_3d.py --dataset {dataset name}
 python main.py --dataset {dataset name} --task_type {reg/class}
 ```
 
-## Citation
-```
-Wang Z, Jiang T, Wang J, et al. Multi-Modal Representation Learning for Molecular Property Prediction: Sequence, Graph, Geometry[J]. arXiv preprint arXiv:2401.03369, 2024.
-```
+
